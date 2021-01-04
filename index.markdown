@@ -6,7 +6,7 @@ layout: default
 ---
 <!-- ![](/assets/images/arpit_photo.png) -->
 ## Simulation of Vision-based Tactile Sensors using Physics based Rendering
-  **Arpit Agarwal**, Tim Man, Wenzhen Yuan  
+  **Arpit Agarwal**, Tim Man, Wenzhen Yuan. \[Under review\]  
   \[[pre-print](https://arxiv.org/abs/2012.13184)\]
   \[[Code](https://github.com/CMURoboTouch/tactile_optical_simulation)\]
 ## Model learning for look-ahead exploration in continuous control 
