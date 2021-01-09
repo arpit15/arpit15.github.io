@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Reinforcement Learning of Active Vision for Manipulating Objects under Occlusions
-poster: assets/images/project_activevisionRL.png
+poster: project_activevisionRL.jpg
 venue: Conference on Robotic Learning (CoRL), 2019
 order: 1
 ---

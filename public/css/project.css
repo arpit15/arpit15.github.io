@@ -1,0 +1,14 @@
+.iconDetails {
+ margin-left:2%;
+  float:left; 
+  height:150px;
+  width:150px; 
+  padding: 1.5%;
+} 
+
+.container2 {
+  /*width:270px;*/
+  height:auto;
+  padding:1%;
+  float:left;
+}

@@ -1,9 +1,9 @@
 ---
 layout: project
 title: Simulation of Vision-based Tactile Sensors using Physics based Rendering
-poster: assets/images/project_opticalsim.png
+poster: project_opticalsim.jpg
 venue : Under review
-order: 3
+order: 4
 ---
 **Arpit Agarwal**, Tim Man, Wenzhen Yuan.
   [pre-print](https://arxiv.org/abs/2012.13184) \|

@@ -1,9 +1,9 @@
 ---
 layout: project
 title: Model learning for look-ahead exploration in continuous control
-poster: assets/images/project_mastersRL.png
+poster: project_mastersRL.jpg
 venue: AAAI Conference on Artificial Intelligence (AAAI), 2019
-order: 2
+order: 3
 ---
 **Arpit Agarwal**, Katharina Muelling, Katerina Fragkiadaki.  
 [pdf](https://www.aaai.org/ojs/index.php/AAAI/article/download/4181/4059) \|
