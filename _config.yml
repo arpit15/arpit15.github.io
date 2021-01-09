@@ -21,7 +21,7 @@
 title: Arpit Agarwal
 # email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Humble abode for things related to photography, tactile research and music composition
+  Humble abode for things related to computer graphics and robotics
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: arpit7t
@@ -29,9 +29,15 @@ github_username:  arpit15
 
 # Build settings
 # theme : minima
-theme: jekyll-theme-modernist
+# theme: jekyll-theme-modernist
+remote_theme : poole/hyde
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
+
+collections:
+  projects:
+    output: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.

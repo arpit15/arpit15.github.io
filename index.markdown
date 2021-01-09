@@ -3,17 +3,11 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: default
+title: Research
 ---
-<!-- ![](/assets/images/arpit_photo.png) -->
-## Simulation of Vision-based Tactile Sensors using Physics based Rendering
-  **Arpit Agarwal**, Tim Man, Wenzhen Yuan. \[Under review\]  
-  \[[pre-print](https://arxiv.org/abs/2012.13184)\]
-  \[[Code](https://github.com/CMURoboTouch/tactile_optical_simulation)\]
-## Model learning for look-ahead exploration in continuous control 
-  **Arpit Agarwal**, Katharina Muelling, Katerina Fragkiadaki. AAAI 2019  
-  \[[pdf](https://www.aaai.org/ojs/index.php/AAAI/article/download/4181/4059)\]
-  \[[Project Page](https://sites.google.com/view/skill-based-exploration/home)\]
-  \[[Code](https://github.com/arpit15/skill-based-exploration-drl)\]
-## Reinforcement Learning of Active Vision for Manipulating Objects under Occlusions
-  Ricson Cheng, **Arpit Agarwal**, Katerina Fragkiadaki. CoRL 2018  
-  \[[pdf](http://proceedings.mlr.press/v87/cheng18a/cheng18a.pdf)\]
+I am a second year Ph.D. student at [Robotics Institute](https://www.ri.cmu.edu/) working in the [RoboTouch Labs](https://labs.ri.cmu.edu/robotouch/) mentored by [Prof. Dr. Wenzhen Yuan](https://www.ri.cmu.edu/ri-faculty/wenzhen-yuan/). My research focuses on computer graphics and tactile sensing. I completed my masters in Robotics at CMU, advised by [Prof. Dr. Katerina Fragkiadaki](https://www.cs.cmu.edu/~katef/) and [Prof. Dr. Katharina Muelling](https://sites.google.com/site/katharinamuelling/). I received my B.Tech. in [Electrical Engineering](https://www.iitk.ac.in/ee/) from [IIT Kanpur](https://www.iitk.ac.in/).
+
+Find my CV [here](assets/pdfs/cv.pdf).
+
+**Email** arpita1 [at] andrew [dot] cmu [dot] edu  
+**Address** 1302 Wean Hall, Pittsburgh, PA 15213, USA
