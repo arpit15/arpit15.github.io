@@ -10,4 +10,4 @@ I am a second year Ph.D. student at [Robotics Institute](https://www.ri.cmu.edu/
 Find my CV [here](assets/pdfs/cv.pdf).
 
 **Email** arpita1 [at] andrew [dot] cmu [dot] edu  
-**Address** 1302 Wean Hall, Pittsburgh, PA 15213, USA
+**Address** A423 NSH, Carnegie Mellon University, Pittsburgh, PA 15213, USA
