@@ -24,7 +24,7 @@
       {% endfor %}
 
       {% assign sorted_projects = site.projects | sort:"order" | reverse %}
-      <h1>Other Project</h1>
+      <h1>Other Projects</h1>
       {% for project in sorted_projects %}
       <div class="left">
             <img src={{ site.baseurl }}assets/images/{{ project.poster }} class='iconDetails'>
