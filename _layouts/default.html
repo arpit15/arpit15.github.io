@@ -35,6 +35,19 @@
         {{ project.content }}
       </div>
       {% endfor %}
+
+      {% assign sorted_tools = site.tools | sort:"order" | reverse %}
+      <h1>Tools</h1>
+      {% for tool in sorted_tools %}
+      <div class="left">
+            <img src={{ site.baseurl }}assets/images/{{ tool.poster }} class='iconDetails'>
+        </div>  
+        <div class="container">
+        <h3>{{ tool.title }}</h3>
+        {{ tool.content }}
+      </div>
+      {% endfor %}
+
     </div>
 
   </body>

@@ -8,7 +8,32 @@
   padding: 1.5%;
 } 
 
+/* TODO add js */
+/* zoom animation */
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(1)}
+  to {-webkit-transform:scale(2)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0.4)}
+  to {transform:scale(1)}
+}
+
+@-webkit-keyframes zoom-out {
+  from {transform:scale(1)}
+  to {transform:scale(0)}
+}
+@keyframes zoom-out {
+  from {transform:scale(1)}
+  to {transform:scale(0)}
+}
+
 .iconDetails:hover {
+  /*-webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;*/
   transform: scale(5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
