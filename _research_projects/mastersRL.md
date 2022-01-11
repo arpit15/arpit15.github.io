@@ -6,6 +6,6 @@ venue: AAAI Conference on Artificial Intelligence (AAAI), 2019
 order: 3
 ---
 **Arpit Agarwal**, Katharina Muelling, Katerina Fragkiadaki.  
-[pdf](https://www.aaai.org/ojs/index.php/AAAI/article/download/4181/4059) \|
+[PDF](https://www.aaai.org/ojs/index.php/AAAI/article/download/4181/4059) \|
 [project page](https://sites.google.com/view/skill-based-exploration/home) \|
 [code](https://github.com/arpit15/skill-based-exploration-drl)

@@ -6,4 +6,4 @@ venue: Conference on Robotic Learning (CoRL), 2019
 order: 1
 ---
 Ricson Cheng, **Arpit Agarwal**, Katerina Fragkiadaki.  
-[pdf](http://proceedings.mlr.press/v87/cheng18a/cheng18a.pdf)
+[PDF](http://proceedings.mlr.press/v87/cheng18a/cheng18a.pdf)

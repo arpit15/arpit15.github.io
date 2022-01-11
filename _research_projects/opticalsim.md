@@ -6,6 +6,7 @@ venue : IEEE International Conference on Robotics and Automation(ICRA) 2021
 order: 4
 ---
 **Arpit Agarwal**, Tim Man, Wenzhen Yuan.   
-[pre-print](https://arxiv.org/abs/2012.13184) \|
+[Conference Version](https://ieeexplore.ieee.org/abstract/document/9561122) \|
+[Extended Version](https://arxiv.org/abs/2012.13184) \|
 [project page](https://labs.ri.cmu.edu/robotouch/tactile-optical-simulation/) \|
 [code](https://github.com/CMURoboTouch/tactile_optical_simulation)
