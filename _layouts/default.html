@@ -13,26 +13,37 @@
       {% assign sorted_pages = site.research_projects | sort:"order" | reverse %}
       <h1>Research Publications</h1>
       {% for project in sorted_pages %}
-        <div class="left">
-            <img src={{ site.baseurl }}assets/images/{{ project.poster }} class='iconDetails'>
-        </div>  
-        <div class="container">
-        <h3>{{ project.title }}</h3>
-        <i>{{ project.venue }}</i>
-        {{ project.content }}
+         
+        <div class="row">
+          <div class="column1">
+            <div class="left">
+              <img src={{ site.baseurl }}assets/images/{{ project.poster }} class='iconDetails'>
+            </div> 
+          </div>
+          <div class="column2">
+            <h3>{{ project.title }}</h3>
+            <i>{{ project.venue }}</i>
+            {{ project.content }}
+            <div class="abstract"><strong>Abstract</strong></div>
+            <div class="hide">{{ project.section.abstract }}</div>
+          </div>
       </div>
       {% endfor %}
 
       {% assign sorted_projects = site.projects | sort:"order" | reverse %}
       <h1>Other Projects</h1>
       {% for project in sorted_projects %}
-      <div class="left">
+      <div class="row">
+      <div class="container1">
+        <div class="left">
             <img src={{ site.baseurl }}assets/images/{{ project.poster }} class='iconDetails'>
         </div>  
-        <div class="container">
+      </div>
+        <div class="container2">
         <h3>{{ project.title }}</h3>
         <i>{{ project.venue }}</i>
         {{ project.content }}
+      </div>
       </div>
       {% endfor %}
 
