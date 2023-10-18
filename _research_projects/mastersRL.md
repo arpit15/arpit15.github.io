@@ -11,3 +11,4 @@ section:
 [PDF](https://www.aaai.org/ojs/index.php/AAAI/article/download/4181/4059) \|
 [project page](https://sites.google.com/view/skill-based-exploration/home) \|
 [code](https://github.com/arpit15/skill-based-exploration-drl)
+{: .links} 

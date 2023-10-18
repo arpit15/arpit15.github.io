@@ -10,3 +10,4 @@ section:
 **Arpit Agarwal**  
 [PDF](https://www.ri.cmu.edu/wp-content/uploads/2018/01/thesis-v2.pdf) \|
 [code](https://github.com/CMURoboTouch/tactile_optical_simulation)
+{: .links} 

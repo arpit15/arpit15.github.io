@@ -2,7 +2,7 @@
 layout: project
 title: Improving Grasp Stability with Rotation Measurement from Tactile Sensing
 poster: project_tactilerotation.png
-venue : IEEE International Conference on Intelligent Robots and Systems(IROS) 2021
+venue : IEEE International Conference on Intelligent Robots and Systems (IROS) 2021
 order: 3
 section: 
   abstract: Rotational displacement about the grasping point is a common grasp failure when an object is grasped at a location away from its center of gravity. Tactile sensors with soft surfaces, such as GelSight sensors, can detect the rotation patterns on the contacting surfaces when the object rotates. In this work, we propose a model-based algorithm that detects those rotational patterns and measures rotational displacement using the GelSight sensor. We also integrate the rotation detection feedback into a closed-loop regrasping framework, which detects the rotational failure of grasp in an early stage and drives the robot to a stable grasp pose. We validate our proposed rotation detection algorithm and grasp-regrasp system on self-collected dataset and online experiments to show how our approach accurately detects the rotation and increases grasp stability.
@@ -10,3 +10,4 @@ section:
 Raj Kolamuri, Zilin Si, Yufan Zhang, **Arpit Agarwal**, Wenzhen Yuan.  
 [PDF](https://ieeexplore.ieee.org/abstract/document/9636488) \|
 [project page](https://labs.ri.cmu.edu/robotouch/grasp-stability/)
+{: .links} 

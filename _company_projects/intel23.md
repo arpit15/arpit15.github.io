@@ -1,8 +1,8 @@
 ---
 layout: project
 title: Rendering Research Internship, Intel
-poster: project_intel23.png
+poster: intel.png
 order: 2
-section: 
-  description: 
+duration: Summer 2023
+description: Worked on speeding up physics-based rendering algorithms using reinforcement learning
 ---

@@ -9,3 +9,4 @@ sections:
 ---
 **Arpit Agarwal**  
 [Report](assets/pdfs/project_layeredmat.pdf)
+{: .links} 

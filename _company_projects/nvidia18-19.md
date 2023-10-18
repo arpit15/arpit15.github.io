@@ -1,8 +1,8 @@
 ---
 layout: project
 title: AI and Robotics R&D Engineer, Nvidia
-poster: project_nvidia18.png
+poster: nvidia.jpeg
 order: 1
-section: 
-  description: 
+duration: 2018-2019
+description: Worked on Sim-to-Real and Reinforcement Learning for robotic manipulation and legged locomotion
 ---

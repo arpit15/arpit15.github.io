@@ -1,7 +1,10 @@
 <div class="sidebar">
-  <div class="container sidebar-sticky">
+  <div class="container">
     <div class="sidebar-about">
       <img src="assets/images/arpit_photo.png">
+      <svg id="cube" height="30" width="30">
+        <path id="cube_path" stroke-width="1" stroke-linejoin="round" fill="none"/>
+      </svg>
       <h1>
         <a href="{{ site.baseurl }}">
           {{ site.title }}
@@ -27,12 +30,11 @@
         {% endif %}
       {% endfor %}
 
-      <a href="https://github.com/arpit15"><i class="fa fa-github" aria-hidden="false"></i> Github</a><br>
-
-        <a href="https://twitter.com/arpit7t"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a>
+      <a href="https://github.com/arpit15"><i class="fa fa-github" aria-hidden="false"></i> Github</a>
+      <a href="https://twitter.com/arpit7t"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a>
       </ul>
     </nav>
 
-    <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
+    <p> Last Updated on {{ site.time | date: '%D' }}. </p>
   </div>
 </div>
