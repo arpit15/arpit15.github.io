@@ -24,7 +24,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Robotics Engineer at Dexterity Inc.
   Ph.D. in Robotics from Carnegie Mellon University.   
   This page provides a humble abode for things related to robotics and AI.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: arpit7t
 github_username:  arpit15
