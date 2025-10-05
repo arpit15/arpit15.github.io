@@ -2,8 +2,8 @@
 layout: project
 title: Vision-based tactile sensor design using physically based rendering
 poster: project_journal.png
-venue : Nature Machine Intelligence Journal (Under submission)
-order: 9
+venue : Nature Machine Intelligence Journal
+order: 8
 section: 
   abstract: High-resolution tactile sensors are very helpful to robots for fine-grained perception and manipulation tasks, but designing those sensors is challenging. This is because the designs are based on the compact integration of multiple optical elements, and it is difficult to understand the correlation between the element arrangements and the sensor accuracy by trial and error. In this work, we introduce the first-ever digital design of vision-based tactile sensors using a physically accurate light simulator and machine intelligence. The framework modularizes the design process, parameterizes the sensor components, and contains an evaluation metric to quantify a sensor's performance. We quantify the effects of sensor shape, illumination setting, and sensing surface material on tactile sensor performance using our evaluation metric. For the first time, to our knowledge, the proposed optical simulation framework can replicate the tactile image of the real sensor prototype. Using our approach we can substantially improve the design of a fingertip GelSight sensor. This improved design performs approximately 5 times better than previous state-of-the-art human-expert design at real-world robotic tactile embossed text detection. Our simulation approach can be used with any vision-based tactile sensor to produce a physically accurate tactile image. Overall, our approach maps human intelligence to machine intelligence for the automatic design of sensorized soft robots and opens the door for tactile-driven dexterous manipulation.    
 ---
