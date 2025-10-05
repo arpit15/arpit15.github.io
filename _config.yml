@@ -21,8 +21,9 @@
 title: Arpit Agarwal
 # email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Ph.D. Candidate at Carnegie Mellon University.   
-  This page provides a humble abode for things related to computer graphics and robotics
+  Robotics Engineer at Dexterity Inc.
+  Ph.D. in Robotics from Carnegie Mellon University.   
+  This page provides a humble abode for things related to robotics and AI.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: arpit7t
@@ -54,7 +55,9 @@ collections:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
+exclude:
+  - _site/
+  - docs/
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/
