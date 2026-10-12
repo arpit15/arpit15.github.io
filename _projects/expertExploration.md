@@ -1,5 +1,4 @@
 ---
-layout: project
 title: Exploration with Expert Policy Advice
 poster: project_expertexploration.jpg
 venue : Technical Report, CMU 2018

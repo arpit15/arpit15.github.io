@@ -1,0 +1,6 @@
+{%- comment -%} Profile links shared by the home page and the footer. {%- endcomment -%}
+{%- capture sep %}<span class="sep" aria-hidden="true">·</span>{% endcapture -%}
+<a href="https://github.com/{{ site.github_username }}">GitHub</a>
+{%- if site.scholar_id %}{{ sep }}<a href="https://scholar.google.com/citations?user={{ site.scholar_id }}">Google Scholar</a>{% endif -%}
+{%- if site.twitter_username %}{{ sep }}<a href="https://x.com/{{ site.twitter_username }}">X/Twitter</a>{% endif -%}
+{%- if site.linkedin_username %}{{ sep }}<a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/">LinkedIn</a>{% endif -%}

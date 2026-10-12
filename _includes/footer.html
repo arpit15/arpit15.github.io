@@ -1,0 +1,9 @@
+<footer class="site-footer">
+  <div class="wrap">
+    {% include social-links.html %}
+    <span aria-hidden="true">·</span>
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    <span aria-hidden="true">·</span>
+    <span>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</span>
+  </div>
+</footer>

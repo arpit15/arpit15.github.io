@@ -1,5 +1,4 @@
 ---
-layout: project
 title: Rendering Research Internship, Intel
 poster: intel.png
 order: 2

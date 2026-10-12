@@ -1,5 +1,4 @@
 ---
-layout: project
 title: AI and Robotics R&D Engineer, Nvidia
 poster: nvidia.jpeg
 order: 1

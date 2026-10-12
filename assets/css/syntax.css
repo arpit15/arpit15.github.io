@@ -1,0 +1,25 @@
+/* Rouge token colors. Palette comes from CSS variables in main.css
+   (GitHub light by default, GitHub dark under dark theme). */
+.highlight { color: var(--code-fg); }
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs { color: var(--hl-comment); font-style: italic; }
+.highlight .cp, .highlight .cpf { color: var(--hl-keyword); font-style: normal; }       /* preprocessor */
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .ow { color: var(--hl-keyword); }
+.highlight .kt, .highlight .nc, .highlight .nn, .highlight .no { color: var(--hl-type); } /* types / classes / namespaces */
+.highlight .kt { color: var(--hl-keyword); }
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .s1, .highlight .ss { color: var(--hl-string); }
+.highlight .se { color: var(--hl-number); }
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx { color: var(--hl-number); }
+.highlight .nf, .highlight .fm, .highlight .nd, .highlight .py { color: var(--hl-func); }
+.highlight .nb, .highlight .bp, .highlight .nl { color: var(--hl-const); }
+.highlight .na { color: var(--hl-number); }
+.highlight .nt { color: var(--hl-tag); }
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm { color: var(--hl-var); }
+.highlight .ne { color: var(--hl-type); }
+.highlight .o { color: var(--hl-keyword); }
+.highlight .p, .highlight .w { color: inherit; }
+.highlight .err { color: var(--hl-keyword); }
+.highlight .gd { background: var(--hl-del-bg); }
+.highlight .gi { background: var(--hl-ins-bg); }
+.highlight .gh, .highlight .gu, .highlight .gs { font-weight: 600; }
+.highlight .ge { font-style: italic; }
+.highlight .go, .highlight .gp { color: var(--hl-comment); }

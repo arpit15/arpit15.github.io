@@ -1,0 +1,25 @@
+{%- comment -%}
+  One publication / project / software entry. Pass `item` (a collection doc).
+  Bodies contain site-relative links like `assets/pdfs/x.pdf`; they are rewritten
+  so they work from any page.
+{%- endcomment -%}
+{%- assign item = include.item -%}
+{%- assign asset_href = '/assets/' | relative_url | prepend: 'href="' -%}
+{%- assign abstract = item.section.abstract | default: item.sections.abstract -%}
+<li class="entry{% if item.poster %} has-thumb{% endif %}">
+  {%- if item.poster -%}
+  {%- assign thumb = item.poster | split: "." | first | prepend: "/assets/images/thumbs/" | append: ".jpg" -%}
+  <img class="entry-thumb" src="{{ thumb | relative_url }}" alt="" loading="lazy" decoding="async">
+  {%- endif %}
+  <div class="entry-text">
+    <div class="entry-title">{{ item.title }}</div>
+    {% if item.venue %}<div class="entry-venue">{{ item.venue }}</div>{% endif %}
+    <div class="entry-body">{{ item.content | replace: 'href="assets/', asset_href }}</div>
+    {%- if abstract or item.bibtex %}
+    <div class="entry-toggles">
+      {%- if abstract %}<details><summary>Abstract</summary><p>{{ abstract }}</p></details>{% endif -%}
+      {%- if item.bibtex %}<details class="bibtex"><summary>BibTeX</summary><div class="code-block"><pre><code>{{ item.bibtex | strip | xml_escape }}</code></pre></div></details>{% endif -%}
+    </div>
+    {%- endif %}
+  </div>
+</li>

@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<section class="intro">
+  {%- comment -%} Every image in assets/images/profile/ is a candidate; one is picked at random on each load. {%- endcomment -%}
+  {%- assign photos = site.static_files | where_exp: "f", "f.path contains '/assets/images/profile/'" | sort: "path" -%}
+  <img class="avatar" id="avatar" src="{{ photos.first.path | relative_url }}" alt="Photo of {{ site.title }}" width="120" height="120">
+  {%- if photos.size > 1 %}
+  <script>
+    (function () {
+      var photos = [{% for f in photos %}"{{ f.path | relative_url }}"{% unless forloop.last %},{% endunless %}{% endfor %}];
+      document.getElementById("avatar").src = photos[Math.floor(Math.random() * photos.length)];
+    })();
+  </script>
+  {%- endif %}
+  <div class="content">
+    {{ content }}
+    <p class="social-links">{% include social-links.html %}</p>
+  </div>
+</section>
+
+<section class="home-section">
+  <h2>Recent posts</h2>
+  <ul class="post-list">
+    {% assign published = site.posts | where_exp: "p", "p.draft != true" %}
+    {% for post in published limit:5 %}
+    <li>
+      <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="more"><a href="{{ '/blog/' | relative_url }}">All posts &rarr;</a></p>
+</section>
+
+<section class="home-section">
+  <h2>Experience</h2>
+  <ul class="plain-list">
+    {% assign jobs = site.company_projects | sort: "order" | reverse %}
+    {% for job in jobs %}
+    <li>
+      <strong>{{ job.title }}</strong> &mdash; {{ job.description | markdownify | remove: '<p>' | remove: '</p>' | strip }}
+      <span class="muted">&middot; {{ job.duration }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

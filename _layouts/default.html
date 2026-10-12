@@ -1,77 +1,13 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="en">
   {% include head.html %}
-
-  <body class="theme-base-0b">
-
-    {% include sidebar.html %}
-
-    <div class="content container">
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    {% include header.html %}
+    <main id="main" class="wrap">
       {{ content }}
-
-      {% assign sorted_pages = site.company_projects | sort:"order" | reverse %}
-      <h1>Professional Experiences</h1>
-      {% for project in sorted_pages %}
-      <div class="research-container">
-        <div class="research-image">
-          <img src={{ site.baseurl }}assets/images/{{ project.poster }}>
-        </div>
-        <div class="research-info">
-          <div class="research-title">{{ project.title }}</div>
-          <i>{{ project.duration }}</i><br>
-          {{ project.description }}
-        </div>
-      </div>
-      {% endfor %}
-
-      {% assign sorted_pages = site.research_projects | sort:"order" | reverse %}
-      <h1>Research Publications</h1>
-      {% for project in sorted_pages %}
-
-      <div class="research-container">
-        <div class="research-image">
-          <img src={{ site.baseurl }}assets/images/{{ project.poster }} class='iconDetails'>
-        </div>
-        <div class="research-info">
-          <div class="research-title">{{ project.title }}</div>
-            <i>{{ project.venue }}</i>
-            {{ project.content }}
-            <div class="abstract"><strong>Abstract</strong></div>
-            <div class="hide"><p>{{ project.section.abstract }}</p></div>
-        </div>
-      </div>
-      {% endfor %}
-
-      {% assign sorted_projects = site.projects | sort:"order" | reverse %}
-      <h1>Other Projects</h1>
-      {% for project in sorted_projects %}
-      <div class="research-container">
-        <div class="research-image">
-            <img src={{ site.baseurl }}assets/images/{{ project.poster }} class='iconDetails'>
-        </div>  
-      
-        <div class="research-info">
-            <div class="research-title">{{ project.title }}</div>
-          <i>{{ project.venue }}</i>
-          {{ project.content }}
-        </div>
-      </div>
-      {% endfor %}
-
-      {% assign sorted_tools = site.tools | sort:"order" | reverse %}
-      <h1>Software</h1>
-      {% for tool in sorted_tools %}
-      <div class="left">
-            <img src={{ site.baseurl }}assets/images/{{ tool.poster }} class='iconDetails'>
-        </div>  
-        <div class="container">
-        <h3>{{ tool.title }}</h3>
-        {{ tool.content }}
-      </div>
-      {% endfor %}
-
-    </div>
-
+    </main>
+    {% include footer.html %}
+    <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
   </body>
 </html>

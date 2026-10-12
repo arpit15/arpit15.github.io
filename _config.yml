@@ -1,70 +1,60 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-
 title: Arpit Agarwal
-# email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Robotics Engineer at Dexterity Inc.
-  Ph.D. in Robotics from Carnegie Mellon University.   
-  This page provides a humble abode for things related to robotics and AI.
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+description: >-
+  Senior Robotics Engineer at Dexterity, working on GPU-first reinforcement learning and CUDA
+  kernels. Ph.D. in Robotics from Carnegie Mellon University.
+author: Arpit Agarwal
+email: arpit15945@gmail.com
+url: "https://arpit15.github.io"   # hostname + protocol (overridden to localhost by `jekyll serve`)
+baseurl: ""                        # subpath, e.g. /personalwebsite for a project site
 twitter_username: arpit7t
-github_username:  arpit15
+github_username: arpit15
+linkedin_username:                 # the part after linkedin.com/in/; leave empty to hide the link
+scholar_id: H8FOdHwAAAAJ
 
-# Build settings
-# theme : minima
-# theme: jekyll-theme-modernist
-remote_theme : poole/hyde
-plugins:
+# Build
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:title/
+plugins:             # all whitelisted by GitHub Pages
   - jekyll-feed
-  - jekyll-remote-theme
+  - jekyll-seo-tag
 
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  # Default math_engine (mathjax) turns $$..$$ into \(..\) / \[..\], which
+  # KaTeX auto-render picks up client-side (see _includes/math.html).
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  toc_levels: 2..3
+
+# These collections are only used as data lists (home + /publications/)
 collections:
   company_projects:
-    output: true
+    output: false
   research_projects:
-    output: true
+    output: false
   projects:
-    output: true
+    output: false
   tools:
-    output: true
+    output: false
 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      math: true
+      toc: false
+
 exclude:
   - _site/
   - docs/
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules/
