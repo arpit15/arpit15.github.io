@@ -4,5 +4,5 @@ poster: dexterity.png
 order: 4
 duration: Jul 2026-Present
 group: Compute Acceleration Group
-description: GPU-first Reinforcement Learning Algorithms, accelerated Machine Learning inference and custom CUDA kernels
+description: Working on GPU-first Reinforcement Learning Algorithms for warehouse robotics, accelerated Machine Learning inference.
 ---
