@@ -210,6 +210,9 @@ mark { background: var(--mark); color: inherit; padding: 0 .15em; }
 .more { font-size: .95rem; }
 .plain-list { list-style: none; padding: 0; margin: 0; }
 .plain-list li { margin: 0 0 .6em; line-height: 1.55; }
+.plain-list li.job { margin: 0 0 1.1em; }
+.job-group { font-style: italic; color: var(--muted); font-size: .9rem; }
+.job-desc { font-size: .92rem; }
 
 /* ---------- post lists (home + blog) ---------- */
 .post-list { list-style: none; padding: 0; margin: 0 0 1em; }

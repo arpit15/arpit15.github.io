@@ -38,9 +38,10 @@ layout: default
   <ul class="plain-list">
     {% assign jobs = site.company_projects | sort: "order" | reverse %}
     {% for job in jobs %}
-    <li>
-      <strong>{{ job.title }}</strong> &mdash; {{ job.description | markdownify | remove: '<p>' | remove: '</p>' | strip }}
-      <span class="muted">&middot; {{ job.duration }}</span>
+    <li class="job">
+      <div class="job-head"><strong>{{ job.title }}</strong> <span class="muted">&mdash; {{ job.duration }}</span></div>
+      {% if job.group %}<div class="job-group">{{ job.group | markdownify | remove: '<p>' | remove: '</p>' | strip }}</div>{% endif %}
+      <div class="job-desc">{{ job.description | markdownify | remove: '<p>' | remove: '</p>' | strip }}</div>
     </li>
     {% endfor %}
   </ul>
