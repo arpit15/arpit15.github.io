@@ -46,3 +46,12 @@ layout: default
     {% endfor %}
   </ul>
 </section>
+
+<section class="home-section">
+  <h2>Academic Reviewing Experience</h2>
+  <ul class="plain-list">
+    {% for r in site.data.reviewing %}
+    <li><strong>{{ r.venue }}</strong> <span class="muted">&mdash; {{ r.years }}</span></li>
+    {% endfor %}
+  </ul>
+</section>
