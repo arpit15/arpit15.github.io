@@ -14,7 +14,7 @@ permalink: /blog/
   <li>
     <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d" }}</time>
     <div class="post-entry">
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <a href="{{ post.link | default: post.url | relative_url }}">{{ post.title }}</a>
       {% if post.description %}<div class="post-desc">{{ post.description }}</div>{% endif %}
     </div>
   </li>
@@ -30,7 +30,7 @@ permalink: /blog/
   <li>
     <span class="post-date">draft</span>
     <div class="post-entry">
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <a href="{{ post.link | default: post.url | relative_url }}">{{ post.title }}</a>
       {% if post.description %}<div class="post-desc">{{ post.description }}</div>{% endif %}
     </div>
   </li>
