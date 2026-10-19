@@ -19,6 +19,7 @@ bibtex: |
 ---
 **Arpit Agarwal**<sup>1</sup>, Abhiroop Ajith<sup>2</sup>, Chengtao Wen<sup>2</sup>, Veniamin Stryzheus<sup>3</sup>, Brian Miller<sup>3</sup>, Matthew Chen<sup>3</sup>, Micah K. Johnson<sup>4</sup>, Jose Luis Susa Rincon<sup>2</sup>, Justinian Rosca<sup>2</sup> and Wenzhen Yuan<sup>1</sup>  
 **Affiliations**: 1 - Carnegie Mellon University, 2 - Siemens Corporations, 3 - Boeing, 4 - GelSight Inc.    
-[PDF](https://arxiv.org/abs/2309.04590) \|
+[Publisher's link](https://ieeexplore.ieee.org/document/10341590) \|
+[arXiv](https://arxiv.org/abs/2309.04590) \|
 [Dataset](https://zenodo.org/records/8327713)
 {: .links} 

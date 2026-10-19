@@ -18,6 +18,7 @@ bibtex: |
   }
 ---
 Raj Kolamuri, Zilin Si, Yufan Zhang, **Arpit Agarwal**, Wenzhen Yuan.  
-[PDF](https://ieeexplore.ieee.org/abstract/document/9636488) \|
-[project page](https://labs.ri.cmu.edu/robotouch/grasp-stability/)
+[Publisher's link](https://ieeexplore.ieee.org/abstract/document/9636488) \|
+[arXiv](https://arxiv.org/abs/2108.00301) \|
+[code](https://web.archive.org/web/20220808210749/https://github.com/CMURoboTouch/Taxim/tree/taxim-robot)
 {: .links} 

@@ -20,5 +20,6 @@ bibtex: |
   }
 ---
 Ricson Cheng, **Arpit Agarwal**, Katerina Fragkiadaki.  
-[PDF](http://proceedings.mlr.press/v87/cheng18a/cheng18a.pdf)
+[Publisher's link](http://proceedings.mlr.press/v87/cheng18a/cheng18a.pdf) \|
+[arXiv](https://arxiv.org/abs/1811.08067)
 {: .links} 

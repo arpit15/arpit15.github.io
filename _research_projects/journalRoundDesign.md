@@ -21,5 +21,7 @@ bibtex: |
 ---
 **Arpit Agarwal**<sup>1</sup>,  Achu Wilson<sup>1</sup>, Timothy Man<sup>1</sup>, Edward Adelson<sup>3</sup>, Ioannis Gkioulekas<sup>1</sup> and Wenzhen Yuan<sup>2</sup>  
 **Affiliations**: 1 - Carnegie Mellon University, 2 - UIUC, 3 - MIT  
-[Paper](https://www.nature.com/articles/s44172-025-00350-4)
+[Publisher's link](https://www.nature.com/articles/s44172-025-00350-4)
 {: .links}
+
+🏆 Selected for [Editor's Choice 2025](https://www.nature.com/articles/s44172-026-00594-8)

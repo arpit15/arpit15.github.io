@@ -18,8 +18,8 @@ bibtex: |
   }
 ---
 **Arpit Agarwal**, Tim Man, Wenzhen Yuan.   
-[Conference Version](https://ieeexplore.ieee.org/abstract/document/9561122) \|
+[Publisher's link](https://ieeexplore.ieee.org/abstract/document/9561122) \|
 [Extended Version](https://arxiv.org/abs/2012.13184) \|
-[project page](https://labs.ri.cmu.edu/robotouch/tactile-optical-simulation/) \|
+[project page](/tactile-optical-simulation/) \|
 [code](https://github.com/CMURoboTouch/tactile_optical_simulation)
 {: .links} 

@@ -19,6 +19,7 @@ bibtex: |
   }
 ---
 Akhil Padmanabha, **Arpit Agarwal**, Catherine Li, Austin Williams, Dinesh K. Patel, Sankalp Chopkar, Achu Wilson, Ahmet Ozkan, Wenzhen Yuan, Sonal Choudhary, Arash Mostaghimi, Zackory Erickson, Carmel Majidi.  
-[Paper](https://doi.org/10.1002/adhm.202504402) \|
-[arXiv](https://arxiv.org/abs/2509.11385)
+[Publisher's link](https://doi.org/10.1002/adhm.202504402) \|
+[arXiv](https://arxiv.org/abs/2509.11385) \|
+[Article](https://www.ri.cmu.edu/a-new-way-to-track-skin-health/)
 {: .links} 

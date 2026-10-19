@@ -20,7 +20,8 @@ bibtex: |
   }
 ---
 **Arpit Agarwal**, Katharina Muelling, Katerina Fragkiadaki.  
-[PDF](https://www.aaai.org/ojs/index.php/AAAI/article/download/4181/4059) \|
+[Publisher's link](https://www.aaai.org/ojs/index.php/AAAI/article/download/4181/4059) \|
+[arXiv](https://arxiv.org/abs/1811.08086) \|
 [project page](https://sites.google.com/view/skill-based-exploration/home) \|
 [code](https://github.com/arpit15/skill-based-exploration-drl)
 {: .links} 

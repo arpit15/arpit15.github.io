@@ -20,5 +20,7 @@ bibtex: |
   }
 ---
 Ruohan Zhang, Uksang Yoo, Yichen Li, **Arpit Agarwal**, Wenzhen Yuan.  
-[PDF](https://arxiv.org/abs/2508.18443) 
+[Publisher's link](https://journals.sagepub.com/doi/abs/10.1177/02783649251378153) \|
+[arXiv](https://arxiv.org/abs/2508.18443) \|
+[project page](https://ruohan-zhang.com/PneuGelSight-project/)
 {: .links} 

@@ -20,5 +20,6 @@ bibtex: |
   }
 ---
 **Arpit Agarwal**, Mohammad Amin Mirzaee, Xiping Sun, Wenzhen Yuan.  
-[PDF](https://arxiv.org/abs/2504.14739) 
+[Publisher's link](https://journals.sagepub.com/doi/abs/10.1177/02783649251339680) \|
+[arXiv](https://arxiv.org/abs/2504.14739)
 {: .links} 

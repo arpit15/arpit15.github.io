@@ -18,7 +18,9 @@ bibtex: |
   }
 ---
 Zilin Si, Zirui Zhu, **Arpit Agarwal**, Wenzhen Yuan.  
+[Publisher's link](https://ieeexplore.ieee.org/document/9981863) \|
 [PDF](assets/pdfs/project_tactilesim2real1.pdf) \|
-[project page](https://labs.ri.cmu.edu/robotouch/tactile-optical-simulation/) \|
+[arXiv](https://arxiv.org/abs/2208.02885) \|
+[project page](/tactile-optical-simulation/) \|
 [code](https://github.com/CMURoboTouch/Taxim/tree/taxim-robot)
 {: .links} 
