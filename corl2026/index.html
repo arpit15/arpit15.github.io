@@ -118,6 +118,7 @@ h2{font-size:28px;letter-spacing:-.02em;margin:0 0 8px}h3{font-size:16px;margin:
 .tag-cloud button:hover{border-color:var(--accent);color:var(--accent)}
 .tag-cloud button.on{background:var(--accent);border-color:var(--accent);color:#fff}
 .tag-cloud button span{opacity:.6;margin-left:4px}
+.tag-cloud button.session{border-style:dashed}
 .badge{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap}
 .b-accepted{background:rgba(36,138,61,.12);color:var(--green)}.b-likely{background:var(--accent-soft);color:var(--accent)}
 .b-submitted{background:rgba(178,80,0,.12);color:var(--orange)}.b-workshop{background:rgba(110,58,214,.12);color:var(--purple)}
@@ -224,7 +225,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--border-soft)
 
   <section id="search">
     <h2>Find papers</h2>
-    <div class="section-sub">Searches title, authors, abstract, OpenReview keywords, arXiv comment, session names and topic labels. Click tags in the cloud to combine them (e.g. RL + Systems); click a title to expand its abstract; click an author or tag to filter by it.</div>
+    <div class="section-sub">Searches title, authors, abstract, OpenReview keywords, arXiv comment, session names and topic labels, and tolerates small typos (e.g. “difusion” finds diffusion). Click tags in the cloud to combine them (e.g. RL + Systems); click a title to expand its abstract; click an author or tag to filter by it.</div>
     <div class="toolbar">
       <div class="toolbar-row">
         <input id="q" placeholder="Search 1: diffusion policy" aria-label="Search 1" />
@@ -267,8 +268,54 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--border-soft)
 <script>
 (() => {
 const APP = JSON.parse(document.getElementById('app-data').textContent);
+// oral/spotlight program sessions (corl.org/program) double as tags, e.g. "Oral O1: Generalist policies and context scaling"
+const sessionTag = t => `${t.session}: ${t.topic}`;
+APP.papers.forEach(p => { if (p.talk) p.tags = [...p.tags, sessionTag(p.talk)]; });
+const SESSION_TAGS = new Set([...new Set(APP.papers.filter(p => p.talk).map(p => sessionTag(p.talk)))].sort((a, b) => a.localeCompare(b, 'en', {numeric: true})));
+APP.meta.tags = [...APP.meta.tags, ...SESSION_TAGS];
 const PAPERS = APP.papers.map((p, i) => ({...p, _i: i,
   _hay: [p.title, p.authors.join(' '), p.abstract, p.comment, p.journal_ref, (p.keywords || []).join(' '), p.presentation, p.talk && `${p.talk.session} ${p.talk.topic}`, p.poster && p.poster.session, p.topics.join(' '), p.methods.join(' '), (p.posts || []).map(x => x.text).join(' '), (p.tags || []).join(' ')].join(' \u0001 ').toLowerCase()}));
+// typo tolerance: per-paper token sets + one global vocabulary, scanned at most once per new query word
+const VOCAB = [...PAPERS.reduce((v, p) => (p._tok = new Set(p._hay.split(/[^a-z0-9]+/).filter(Boolean)), p._tok.forEach(t => v.add(t)), v), new Set())];
+// optimal-string-alignment distance (substitution, insert, delete, adjacent swap); returns k+1 as soon as it must exceed k
+const osa = (a, b, k) => {
+  const n = a.length, m = b.length;
+  if (Math.abs(n - m) > k) return k + 1;
+  let p2 = [], p1 = Array.from({length: m + 1}, (_, j) => j);
+  for (let i = 1; i <= n; i++) {
+    const c = [i];
+    let lo = i;
+    for (let j = 1; j <= m; j++) {
+      const cost = a.charCodeAt(i - 1) === b.charCodeAt(j - 1) ? 0 : 1;
+      let d = Math.min(p1[j] + 1, c[j - 1] + 1, p1[j - 1] + cost);
+      if (i > 1 && j > 1 && a.charCodeAt(i - 1) === b.charCodeAt(j - 2) && a.charCodeAt(i - 2) === b.charCodeAt(j - 1)) d = Math.min(d, p2[j - 2] + 1);
+      c[j] = d; if (d < lo) lo = d;
+    }
+    if (lo > k) return k + 1;
+    p2 = p1; p1 = c;
+  }
+  return p1[m];
+};
+const FUZZY_MIN = 4, fuzzyOK = w => w.length >= FUZZY_MIN && /^[a-z0-9]+$/.test(w);
+const fuzzyCache = new Map();
+// vocab tokens sharing w's first letter and within its typo budget, compared whole or as a same-length prefix (so unfinished/misspelled stems still hit)
+const fuzzyExpand = w => {
+  let s = fuzzyCache.get(w);
+  if (!s) {
+    const k = w.length >= 8 ? 2 : 1, L = w.length;
+    s = new Set(VOCAB.filter(t => t[0] === w[0] && t.length >= L - k && (osa(w, t, k) <= k || (t.length > L + k && osa(w, t.slice(0, L), k) <= k))));
+    if (fuzzyCache.size > 500) fuzzyCache.clear();
+    fuzzyCache.set(w, s);
+  }
+  return s;
+};
+const fuzzyHit = (p, w) => {
+  if (!fuzzyOK(w)) return false;
+  const e = fuzzyExpand(w);
+  if (e.size < p._tok.size) { for (const t of e) if (p._tok.has(t)) return true; }
+  else for (const t of p._tok) if (e.has(t)) return true;
+  return false;
+};
 const SOURCES = {arxiv: 'arXiv', x: 'X', linkedin: 'LinkedIn'};
 const AREAS = APP.meta.areas;
 const PRES = {
@@ -304,14 +351,15 @@ function readURL() {
     el.value = v;
   }
   state.author = u.get('author') || '';
-  state.tags = (u.get('tags') || '').split(',').filter(t => APP.meta.tags.includes(t));
+  // tags are '|'-separated (session tags contain commas); older links used ','
+  state.tags = (u.get('tags') || '').split('|').flatMap(t => APP.meta.tags.includes(t) ? [t] : t.split(',')).filter(t => APP.meta.tags.includes(t));
   state.page = Math.max(1, +u.get('page') || 1);
 }
 function writeURL() {
   const u = new URLSearchParams();
   for (const [k, id] of Object.entries(FIELDS)) { const v = $(id).value; if (v && v !== (DEFAULTS[k] ?? '')) u.set(k, v); }
   if (state.author) u.set('author', state.author);
-  if (state.tags.length) u.set('tags', state.tags.join(','));
+  if (state.tags.length) u.set('tags', state.tags.join('|'));
   if (state.page > 1) u.set('page', state.page);
   const qs = u.toString();
   history.replaceState(null, '', (qs ? '?' + qs : location.pathname) + location.hash);
@@ -327,8 +375,8 @@ function filtered() {
   const method = $('methodFilter').value, cat = $('catFilter').value, links = $('linkFilter').value, source = $('sourceFilter').value;
   const srcOK = p => !source || (source === 'arxiv' ? !!p.arxiv_id : source === 'no-arxiv' ? !p.arxiv_id : p.sources.includes(source));
   const match = p => {
-    // every whitespace-separated word of a search box must appear
-    const hit = t => t.split(/\s+/).every(w => p._hay.includes(w));
+    // every whitespace-separated word of a search box must appear (exactly, or as a near-miss typo)
+    const hit = t => t.split(/\s+/).every(w => p._hay.includes(w) || fuzzyHit(p, w));
     return mode === 'or' ? ts.some(hit) : ts.every(hit);
   };
   let rows = inScope().filter(p =>
@@ -351,7 +399,10 @@ function highlight(text) {
   let out = esc(text);
   const words = [...new Set(terms().flatMap(t => t.split(/\s+/)))].filter(w => w.length > 1).sort((a, b) => b.length - a.length);
   if (!words.length) return out;
-  const re = new RegExp('(' + words.map(w => esc(w).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')', 'gi');
+  // also mark whole vocabulary words that fuzzy-match a query word (capped to keep the regex small)
+  const near = [...new Set(words.filter(fuzzyOK).flatMap(w => [...fuzzyExpand(w)].sort((a, b) => Math.abs(a.length - w.length) - Math.abs(b.length - w.length)).slice(0, 50)))]
+    .filter(t => !words.includes(t)).slice(0, 50).map(t => '\\b' + t + '\\b');
+  const re = new RegExp('(' + [...near, ...words.map(w => esc(w).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))].join('|') + ')', 'gi');
   return out.replace(/(<[^>]*>)|([^<]+)/g, (m, tag, txt) => tag || txt.replace(re, '<mark>$1</mark>'));
 }
 const AUTHOR_CAP = 10;
@@ -430,9 +481,10 @@ function renderChips() {
 function renderTagCloud(rows) {
   // counts reflect the current result set, so the cloud shows what each extra tag would narrow to
   const c = countBy(rows, p => p.tags);
-  $('tagCloud').innerHTML = APP.meta.tags.filter(t => c.get(t) || state.tags.includes(t))
-    .sort((a, b) => (c.get(b) || 0) - (c.get(a) || 0))
-    .map(t => `<button class="${state.tags.includes(t) ? 'on' : ''}" data-cloud="${esc(t)}" aria-pressed="${state.tags.includes(t)}">${esc(t)}<span>${c.get(t) || 0}</span></button>`).join('');
+  // topic tags by count, then session tags in program order
+  const shown = APP.meta.tags.filter(t => c.get(t) || state.tags.includes(t));
+  $('tagCloud').innerHTML = [...shown.filter(t => !SESSION_TAGS.has(t)).sort((a, b) => (c.get(b) || 0) - (c.get(a) || 0)), ...shown.filter(t => SESSION_TAGS.has(t))]
+    .map(t => `<button class="${state.tags.includes(t) ? 'on' : ''}${SESSION_TAGS.has(t) ? ' session' : ''}" data-cloud="${esc(t)}" aria-pressed="${state.tags.includes(t)}">${esc(t)}<span>${c.get(t) || 0}</span></button>`).join('');
 }
 function toggleTag(t, jump) {
   state.tags = state.tags.includes(t) ? state.tags.filter(x => x !== t) : [...state.tags, t];
@@ -526,7 +578,7 @@ function renderTopics(rows) {
   hbar('subChart', subs.map(x => subOf(x[0])), subs.map(x => x[1]), (l, i) => setFilter({topicFilter: subs[i][0], areaFilter: ''}));
   const meth = top(countBy(rows, p => p.methods.filter(m => m !== 'Other')), 20);
   hbar('methodChart', meth.map(x => x[0]), meth.map(x => x[1]), l => setFilter({methodFilter: l}), `rgba(${css('--accent-rgb')},.5)`);
-  const tg = top(countBy(rows, p => p.tags), 25);
+  const tg = top(countBy(rows, p => p.tags.filter(t => !SESSION_TAGS.has(t))), 25);
   hbar('tagChart', tg.map(x => x[0]), tg.map(x => x[1]), l => setFilter({tags: [l]}), `rgba(${css('--accent-rgb')},.65)`);
   renderHeatmap(rows);
 }
@@ -635,7 +687,7 @@ function wire() {
     else if (el.dataset.tag) toggleTag(el.dataset.tag, true);
   };
   $('downloadJson').onclick = () => {
-    const rows = filtered().map(({_i, _hay, ...p}) => p);
+    const rows = filtered().map(({_i, _hay, _tok, ...p}) => p);
     const a = Object.assign(document.createElement('a'), {href: URL.createObjectURL(new Blob([JSON.stringify(rows, null, 1)], {type: 'application/json'})), download: 'corl2026_papers.json'});
     a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
