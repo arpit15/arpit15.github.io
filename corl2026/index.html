@@ -158,10 +158,11 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--border-soft)
 </div></div>
 <div class="layout">
 <aside>
-  <h4>Overview</h4><a href="#overview">Introduction</a><a href="#status">Program</a>
+  <h4>Overview</h4><a href="#overview">Introduction</a>
+  <h4>Search</h4><a href="#search">Find papers</a>
+  <h4>Statistics</h4><a href="#status">Program</a>
   <h4>Trends</h4><a href="#taxonomy">Topic taxonomy</a><a href="#topics">Areas &amp; methods</a><a href="#timeline">arXiv timeline</a>
   <h4>EDA</h4><a href="#authors">Authors</a>
-  <h4>Search</h4><a href="#search">Find papers</a>
 </aside>
 <main>
   <section id="overview">
@@ -171,9 +172,46 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--border-soft)
     <div class="kpis" id="kpis"></div>
   </section>
 
+  <section id="search">
+    <h2>Find papers</h2>
+    <div class="section-sub">Searches title, authors, abstract, OpenReview keywords, arXiv comment, session names and topic labels, and tolerates small typos (e.g. “difusion” finds diffusion). Click tags in the cloud to combine them (e.g. RL + Systems); click a title to expand its abstract; click an author or tag to filter by it.</div>
+    <div class="toolbar">
+      <div class="toolbar-row">
+        <input id="q" placeholder="Search 1: diffusion policy" aria-label="Search 1" />
+        <select id="searchMode" aria-label="Combine searches"><option value="and">AND</option><option value="or">OR</option></select>
+        <input id="q2" placeholder="Search 2" aria-label="Search 2" />
+        <input id="q3" placeholder="Search 3" aria-label="Search 3" />
+      </div>
+      <div class="toolbar-row tag-cloud" id="tagCloud" aria-label="Tags (click to combine)"></div>
+      <div class="toolbar-row">
+        <select id="statusFilter" aria-label="Session"><option value="all">All sessions</option></select>
+        <select id="presFilter" aria-label="Presentation"><option value="">All presentations</option><option value="oral">Oral</option><option value="spotlight">Spotlight</option><option value="poster">Poster</option></select>
+        <select id="areaFilter" aria-label="Area"><option value="">All areas</option></select>
+        <select id="topicFilter" aria-label="Subtopic"><option value="">All subtopics</option></select>
+        <select id="methodFilter" aria-label="Method"><option value="">All methods</option></select>
+        <select id="catFilter" aria-label="arXiv category"><option value="">All arXiv categories</option></select>
+      </div>
+      <div class="toolbar-row">
+        <select id="sortFilter" aria-label="Sort">
+          <option value="program">Sort: program order</option><option value="newest">Newest on arXiv</option><option value="oldest">Oldest on arXiv</option>
+          <option value="title-asc">Title A–Z</option><option value="title-desc">Title Z–A</option>
+          <option value="authors-desc"># Authors most</option><option value="authors-asc"># Authors fewest</option><option value="status">Oral → spotlight → poster</option>
+        </select>
+        <select id="pageSizeFilter" aria-label="Page size"><option value="25">25 / page</option><option value="50">50 / page</option><option value="100">100 / page</option><option value="500">500 / page</option></select>
+        <select id="sourceFilter" aria-label="Source"><option value="">All sources</option><option value="arxiv">On arXiv</option><option value="no-arxiv">Not on arXiv</option><option value="x">Posted on X</option><option value="linkedin">Posted on LinkedIn</option></select>
+        <select id="linkFilter" aria-label="Links"><option value="">Any links</option><option value="project">Has project page</option><option value="code">Has code</option></select>
+        <button id="clearFilters" class="btn-clear" type="button">Clear</button>
+        <span class="count" id="count"></span>
+      </div>
+    </div>
+    <div id="activeFilters" class="active-filters"></div>
+    <div class="papers" id="papers"></div>
+    <div class="pager" id="pager"></div>
+  </section>
+
   <section id="status">
     <h2>Program <span class="pill">Official</span></h2>
-    <div class="section-sub">Every paper below is on the official CoRL 2026 accepted-papers list, with its oral or spotlight session and poster slot. Titles and sessions come from the official program; authors, abstracts and keywords from OpenReview. arXiv links, categories and posting dates come from the matching preprint, found by title.</div>
+    <div class="section-sub">Every paper in this explorer is on the official CoRL 2026 accepted-papers list, with its oral or spotlight session and poster slot. Titles and sessions come from the official program; authors, abstracts and keywords from OpenReview. arXiv links, categories and posting dates come from the matching preprint, found by title.</div>
     <div class="stat-grid" id="officialGrid" style="margin-bottom:12px"></div>
     <div class="card" style="margin-bottom:12px">
       <h3>arXiv coverage</h3>
@@ -221,43 +259,6 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--border-soft)
       <div class="card"><h3>Most papers</h3><div class="chart-box tall"><canvas id="authorChart"></canvas></div></div>
       <div class="card"><h3>Authors per paper</h3><div class="chart-box tall"><canvas id="authorsPerChart"></canvas></div></div>
     </div>
-  </section>
-
-  <section id="search">
-    <h2>Find papers</h2>
-    <div class="section-sub">Searches title, authors, abstract, OpenReview keywords, arXiv comment, session names and topic labels, and tolerates small typos (e.g. “difusion” finds diffusion). Click tags in the cloud to combine them (e.g. RL + Systems); click a title to expand its abstract; click an author or tag to filter by it.</div>
-    <div class="toolbar">
-      <div class="toolbar-row">
-        <input id="q" placeholder="Search 1: diffusion policy" aria-label="Search 1" />
-        <select id="searchMode" aria-label="Combine searches"><option value="and">AND</option><option value="or">OR</option></select>
-        <input id="q2" placeholder="Search 2" aria-label="Search 2" />
-        <input id="q3" placeholder="Search 3" aria-label="Search 3" />
-      </div>
-      <div class="toolbar-row tag-cloud" id="tagCloud" aria-label="Tags (click to combine)"></div>
-      <div class="toolbar-row">
-        <select id="statusFilter" aria-label="Session"><option value="all">All sessions</option></select>
-        <select id="presFilter" aria-label="Presentation"><option value="">All presentations</option><option value="oral">Oral</option><option value="spotlight">Spotlight</option><option value="poster">Poster</option></select>
-        <select id="areaFilter" aria-label="Area"><option value="">All areas</option></select>
-        <select id="topicFilter" aria-label="Subtopic"><option value="">All subtopics</option></select>
-        <select id="methodFilter" aria-label="Method"><option value="">All methods</option></select>
-        <select id="catFilter" aria-label="arXiv category"><option value="">All arXiv categories</option></select>
-      </div>
-      <div class="toolbar-row">
-        <select id="sortFilter" aria-label="Sort">
-          <option value="program">Sort: program order</option><option value="newest">Newest on arXiv</option><option value="oldest">Oldest on arXiv</option>
-          <option value="title-asc">Title A–Z</option><option value="title-desc">Title Z–A</option>
-          <option value="authors-desc"># Authors most</option><option value="authors-asc"># Authors fewest</option><option value="status">Oral → spotlight → poster</option>
-        </select>
-        <select id="pageSizeFilter" aria-label="Page size"><option value="25">25 / page</option><option value="50">50 / page</option><option value="100">100 / page</option><option value="500">500 / page</option></select>
-        <select id="sourceFilter" aria-label="Source"><option value="">All sources</option><option value="arxiv">On arXiv</option><option value="no-arxiv">Not on arXiv</option><option value="x">Posted on X</option><option value="linkedin">Posted on LinkedIn</option></select>
-        <select id="linkFilter" aria-label="Links"><option value="">Any links</option><option value="project">Has project page</option><option value="code">Has code</option></select>
-        <button id="clearFilters" class="btn-clear" type="button">Clear</button>
-        <span class="count" id="count"></span>
-      </div>
-    </div>
-    <div id="activeFilters" class="active-filters"></div>
-    <div class="papers" id="papers"></div>
-    <div class="pager" id="pager"></div>
   </section>
 
   <footer>Sources: <a href="https://www.corl.org/program/accepted-papers" target="_blank" rel="noopener">CoRL 2026 accepted papers</a> (titles, sessions), OpenReview (authors, abstracts, keywords), arXiv API (preprints, matched by title), and public posts on X and LinkedIn. Topic tags are automatic keyword matches and may be wrong. Based on the <a href="https://gisbi-kim.github.io/cvpr2026-explorer/output/cvpr2026_explorer.html" target="_blank" rel="noopener">CVPR 2026 Explorer</a> by <a href="https://github.com/gisbi-kim" target="_blank" rel="noopener">gisbi-kim</a>. Generated <span id="genDate"></span>.</footer>
